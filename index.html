@@ -97,7 +97,7 @@ body::-webkit-scrollbar {
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function() {
     const customScrolls = document.querySelectorAll('.custom-scroll');
 
     customScrolls.forEach(customScroll => {
@@ -105,22 +105,69 @@ body::-webkit-scrollbar {
         const scrollbar = customScroll.querySelector('.scrollbar');
         const scrollbarThumb = customScroll.querySelector('.scrollbar-thumb');
 
-        content.addEventListener('scroll', () => {
+        const updateThumbPosition = () => {
             const scrollRatio = content.scrollTop / (content.scrollHeight - content.clientHeight);
             scrollbarThumb.style.top = scrollRatio * (customScroll.clientHeight - scrollbarThumb.clientHeight) + 'px';
-        });
+        };
+
+        const updateContentScroll = (e) => {
+            const scrollRatio = e.offsetY / customScroll.clientHeight;
+            content.scrollTop = scrollRatio * (content.scrollHeight - content.clientHeight);
+        };
+
+        content.addEventListener('scroll', updateThumbPosition);
 
         customScroll.addEventListener('wheel', (e) => {
             content.scrollTop += e.deltaY;
             e.preventDefault();
         });
 
+        scrollbar.addEventListener('click', (e) => {
+            if (e.target !== scrollbarThumb) {
+                updateContentScroll(e);
+                updateThumbPosition();
+            }
+        });
+
+        let isDragging = false;
+        let startY;
+        let startTop;
+
+        scrollbarThumb.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startY = e.clientY;
+            startTop = parseInt(window.getComputedStyle(scrollbarThumb).top, 10);
+            document.body.classList.add('no-select');
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaY = e.clientY - startY;
+                const newTop = startTop + deltaY;
+                const maxTop = customScroll.clientHeight - scrollbarThumb.clientHeight;
+                scrollbarThumb.style.top = Math.min(Math.max(newTop, 0), maxTop) + 'px';
+
+                const scrollRatio = parseInt(scrollbarThumb.style.top, 10) / maxTop;
+                content.scrollTop = scrollRatio * (content.scrollHeight - content.clientHeight);
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                document.body.classList.remove('no-select');
+            }
+        });
+
         const observer = new ResizeObserver(() => {
             const thumbHeightRatio = content.clientHeight / content.scrollHeight;
             scrollbarThumb.style.height = Math.max(thumbHeightRatio * customScroll.clientHeight, 20) + 'px';
+            updateThumbPosition();
         });
 
         observer.observe(content);
     });
 });
+ 
 </script>
