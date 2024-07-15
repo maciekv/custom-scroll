@@ -1,0 +1,126 @@
+<style>
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+
+body {
+    -ms-overflow-style: none;  
+}
+
+body::-webkit-scrollbar {
+    display: none;  
+}
+
+
+.custom-scroll {
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-scroll .content {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.custom-scroll .scrollbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 100%;
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+.custom-scroll .scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: #888;
+    border-radius: 6px;
+}
+.container {
+    height: 300px;
+    width: 400px;
+    /* border: 1px solid gray; */
+}
+</style>
+<div class="container custom-scroll">
+    <div class="content">
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        
+    </div>
+    <div class="scrollbar">
+        <div class="scrollbar-thumb"></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const customScrolls = document.querySelectorAll('.custom-scroll');
+
+    customScrolls.forEach(customScroll => {
+        const content = customScroll.querySelector('.content');
+        const scrollbar = customScroll.querySelector('.scrollbar');
+        const scrollbarThumb = customScroll.querySelector('.scrollbar-thumb');
+
+        content.addEventListener('scroll', () => {
+            const scrollRatio = content.scrollTop / (content.scrollHeight - content.clientHeight);
+            scrollbarThumb.style.top = scrollRatio * (customScroll.clientHeight - scrollbarThumb.clientHeight) + 'px';
+        });
+
+        customScroll.addEventListener('wheel', (e) => {
+            content.scrollTop += e.deltaY;
+            e.preventDefault();
+        });
+
+        const observer = new ResizeObserver(() => {
+            const thumbHeightRatio = content.clientHeight / content.scrollHeight;
+            scrollbarThumb.style.height = Math.max(thumbHeightRatio * customScroll.clientHeight, 20) + 'px';
+        });
+
+        observer.observe(content);
+    });
+});
+</script>
