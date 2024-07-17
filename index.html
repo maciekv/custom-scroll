@@ -1,173 +1,212 @@
 <style>
-
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
-}
-
-
-body {
-    -ms-overflow-style: none;  
-}
-
-body::-webkit-scrollbar {
-    display: none;  
-}
-
-
-.custom-scroll {
-    position: relative;
-    overflow: hidden;
-}
-
-.custom-scroll .content {
-    overflow-y: scroll;
-    height: 100%;
-}
-
-.custom-scroll .scrollbar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 12px;
-    height: 100%;
-    background: #f1f1f1;
-    border-radius: 6px;
-}
-
-.custom-scroll .scrollbar-thumb {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    background: #888;
-    border-radius: 6px;
-}
-.container {
-    height: 300px;
-    width: 400px;
-    /* border: 1px solid gray; */
-}
-</style>
-<div class="container custom-scroll">
-    <div class="content">
-        
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        
+    /* Styl dla WebKit (Chrome, Safari) */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    /* Styl dla Firefox */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
+    
+    /* Styl dla Internet Explorer i Edge */
+    body {
+        -ms-overflow-style: none;  /* Ukrywa domyślny scrollbar */
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;  /* Ukrywa domyślny scrollbar */
+    }
+    
+    /* Customowy scrollbar za pomocą pseudo-elementów */
+    .custom-scroll {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .custom-scroll .content {
+        overflow-y: scroll;
+        height: 100%;
+    }
+    
+    .custom-scroll .scrollbar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 12px;
+        height: 100%;
+        background: #f1f1f1;
+        border-radius: 6px;
+    }
+    
+    .custom-scroll .scrollbar-thumb {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        background: #888;
+        border-radius: 6px;
+    }
+    
+    .container {
+        height: 300px;
+        width: 400px;
+        /* border: 1px solid gray; */
+    }
+    
+    .dropdown-item {
+        padding: 8px;
+        cursor: pointer;
+    }
+    
+    .dropdown-item.selected {
+        background-color: red;
+    }
+    </style>
+    
+    <div class="container custom-scroll">
+        <div class="content" tabindex="0">
+            <!-- Elementy dropdowna -->
+            <div class="dropdown-item selected">Item 1</div>
+            <div class="dropdown-item">Item 2</div>
+            <div class="dropdown-item">Item 3</div>
+            <div class="dropdown-item">Item 4</div>
+            <div class="dropdown-item">Item 5</div>
+            <div class="dropdown-item">Item 6</div>
+            <div class="dropdown-item">Item 7</div>
+            <div class="dropdown-item">Item 8</div>
+            <div class="dropdown-item">Item 9</div>
+            <div class="dropdown-item">Item 10</div>
+            <div class="dropdown-item">Item 11</div>
+            <div class="dropdown-item">Item 12</div>
+            <div class="dropdown-item">Item 13</div>
+            <div class="dropdown-item">Item 14</div>
+            <div class="dropdown-item">Item 15</div>
+            <div class="dropdown-item">Item 16</div>
+            <div class="dropdown-item">Item 17</div>
+            <div class="dropdown-item">Item 18</div>
+            <div class="dropdown-item">Item 19</div>
+            <div class="dropdown-item">Item 20</div>
+            <div class="dropdown-item">Item 21</div>
+            <div class="dropdown-item">Item 22</div>
+            <div class="dropdown-item">Item 23</div>
+            <div class="dropdown-item">Item 24</div>
+            <div class="dropdown-item">Item 25</div>
+            <div class="dropdown-item">Item 26</div>
+        </div>
+        <div class="scrollbar">
+            <div class="scrollbar-thumb"></div>
+        </div>
     </div>
-    <div class="scrollbar">
-        <div class="scrollbar-thumb"></div>
-    </div>
-</div>
-
-<script>
-   document.addEventListener('DOMContentLoaded', function() {
-    const customScrolls = document.querySelectorAll('.custom-scroll');
-
-    customScrolls.forEach(customScroll => {
-        const content = customScroll.querySelector('.content');
-        const scrollbar = customScroll.querySelector('.scrollbar');
-        const scrollbarThumb = customScroll.querySelector('.scrollbar-thumb');
-
-        const updateThumbPosition = () => {
-            const scrollRatio = content.scrollTop / (content.scrollHeight - content.clientHeight);
-            scrollbarThumb.style.top = scrollRatio * (customScroll.clientHeight - scrollbarThumb.clientHeight) + 'px';
-        };
-
-        const updateContentScroll = (e) => {
-            const scrollRatio = e.offsetY / customScroll.clientHeight;
-            content.scrollTop = scrollRatio * (content.scrollHeight - content.clientHeight);
-        };
-
-        content.addEventListener('scroll', updateThumbPosition);
-
-        customScroll.addEventListener('wheel', (e) => {
-            content.scrollTop += e.deltaY;
-            e.preventDefault();
-        });
-
-        scrollbar.addEventListener('click', (e) => {
-            if (e.target !== scrollbarThumb) {
-                updateContentScroll(e);
-                updateThumbPosition();
-            }
-        });
-
-        let isDragging = false;
-        let startY;
-        let startTop;
-
-        scrollbarThumb.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startY = e.clientY;
-            startTop = parseInt(window.getComputedStyle(scrollbarThumb).top, 10);
-            document.body.classList.add('no-select');
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const deltaY = e.clientY - startY;
-                const newTop = startTop + deltaY;
-                const maxTop = customScroll.clientHeight - scrollbarThumb.clientHeight;
-                scrollbarThumb.style.top = Math.min(Math.max(newTop, 0), maxTop) + 'px';
-
-                const scrollRatio = parseInt(scrollbarThumb.style.top, 10) / maxTop;
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const customScrolls = document.querySelectorAll('.custom-scroll');
+    
+        customScrolls.forEach(customScroll => {
+            const content = customScroll.querySelector('.content');
+            const scrollbar = customScroll.querySelector('.scrollbar');
+            const scrollbarThumb = customScroll.querySelector('.scrollbar-thumb');
+            const items = content.querySelectorAll('.dropdown-item');
+            let selectedIndex = 0;
+    
+            const updateThumbPosition = () => {
+                const scrollRatio = content.scrollTop / (content.scrollHeight - content.clientHeight);
+                scrollbarThumb.style.top = scrollRatio * (customScroll.clientHeight - scrollbarThumb.clientHeight) + 'px';
+            };
+    
+            const updateContentScroll = (e) => {
+                const scrollRatio = e.offsetY / customScroll.clientHeight;
                 content.scrollTop = scrollRatio * (content.scrollHeight - content.clientHeight);
-            }
+            };
+    
+            content.addEventListener('scroll', updateThumbPosition);
+    
+            customScroll.addEventListener('wheel', (e) => {
+                content.scrollTop += e.deltaY;
+                e.preventDefault();
+            });
+    
+            scrollbar.addEventListener('click', (e) => {
+                if (e.target !== scrollbarThumb) {
+                    updateContentScroll(e);
+                    updateThumbPosition();
+                }
+            });
+    
+            let isDragging = false;
+            let startY;
+            let startTop;
+    
+            scrollbarThumb.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startY = e.clientY;
+                startTop = parseInt(window.getComputedStyle(scrollbarThumb).top, 10);
+                document.body.classList.add('no-select');
+                e.preventDefault();
+            });
+    
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const deltaY = e.clientY - startY;
+                    const newTop = startTop + deltaY;
+                    const maxTop = customScroll.clientHeight - scrollbarThumb.clientHeight;
+                    scrollbarThumb.style.top = Math.min(Math.max(newTop, 0), maxTop) + 'px';
+    
+                    const scrollRatio = parseInt(scrollbarThumb.style.top, 10) / maxTop;
+                    content.scrollTop = scrollRatio * (content.scrollHeight - content.clientHeight);
+                }
+            });
+    
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    document.body.classList.remove('no-select');
+                }
+            });
+    
+            const observer = new ResizeObserver(() => {
+                const thumbHeightRatio = content.clientHeight / content.scrollHeight;
+                scrollbarThumb.style.height = Math.max(thumbHeightRatio * customScroll.clientHeight, 20) + 'px';
+                updateThumbPosition();
+            });
+    
+            observer.observe(content);
+    
+            content.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowDown') {
+                    if (selectedIndex < items.length - 1) {
+                        items[selectedIndex].classList.remove('selected');
+                        selectedIndex++;
+                        items[selectedIndex].classList.add('selected');
+                        items[selectedIndex].scrollIntoView({ block: 'nearest' });
+                    }
+                } else if (e.key === 'ArrowUp') {
+                    if (selectedIndex > 0) {
+                        items[selectedIndex].classList.remove('selected');
+                        selectedIndex--;
+                        items[selectedIndex].classList.add('selected');
+                        items[selectedIndex].scrollIntoView({ block: 'nearest' });
+                    }
+                }
+            });
+    
+            content.focus();
         });
-
-        document.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                document.body.classList.remove('no-select');
-            }
-        });
-
-        const observer = new ResizeObserver(() => {
-            const thumbHeightRatio = content.clientHeight / content.scrollHeight;
-            scrollbarThumb.style.height = Math.max(thumbHeightRatio * customScroll.clientHeight, 20) + 'px';
-            updateThumbPosition();
-        });
-
-        observer.observe(content);
     });
-});
- 
-</script>
+    </script>
+    
